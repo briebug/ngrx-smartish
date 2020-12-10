@@ -125,7 +125,50 @@
           }
         }
       }
+    },
+    "ngrx-dispatch": {
+      "projectType": "library",
+      "root": "projects/ngrx-dispatch",
+      "sourceRoot": "projects/ngrx-dispatch/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ngrx-dispatch/tsconfig.lib.json",
+            "project": "projects/ngrx-dispatch/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngrx-dispatch/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngrx-dispatch/src/test.ts",
+            "tsConfig": "projects/ngrx-dispatch/tsconfig.spec.json",
+            "karmaConfig": "projects/ngrx-dispatch/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngrx-dispatch/tsconfig.lib.json",
+              "projects/ngrx-dispatch/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "ngrx-smartish"
+  "defaultProject": "ngrx-smartish",
+  "cli": {
+    "analytics": "fadc47f4-c752-40ec-8645-36fd82e2983f"
+  }
 }
