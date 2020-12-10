@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { createAction } from '@ngrx/store';
+import { selectTaco } from './store';
 
 const appAction = createAction('[APP COMPONENT] Smartish Button Click');
 
@@ -11,4 +12,5 @@ const appAction = createAction('[APP COMPONENT] Smartish Button Click');
 export class AppComponent {
   title = 'ngrx-smartish';
   action = appAction();
+  taco$ = selectTaco;
 }
