@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { NgrxDispatchModule } from 'projects/ngrx-dispatch/src/lib';
+import { NgrxDispatchModule } from 'projects/ngrx-smartish/src/lib/ngrx-dispatch';
 import { AppComponent } from './app.component';
 
 @NgModule({
