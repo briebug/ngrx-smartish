@@ -1,4 +1,3 @@
-import { DISPATCH_STORE_TOKEN } from './token';
 export { DISPATCH_STORE_TOKEN } from './token';
 export { dispatchFactoryFunction } from './factory';
 export { NgRxDispatchDirective } from './dispatch.directive';

@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:smartish": "ng build ngrx-smartish",
     "test": "ng test",
+    "test:smartish": "ng test ngrx-smartish",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
