@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { selectTaco } from './store';
 
 const appAction = createAction('[APP COMPONENT] Smartish Button Click');
+
+const appActionWithProp = createAction(
+  '[APP COMPONENT] Smartish Button Click With Prop',
+  props<{ value: number }>()
+);
 
 @Component({
   selector: 'app-root',
@@ -11,6 +16,8 @@ const appAction = createAction('[APP COMPONENT] Smartish Button Click');
 })
 export class AppComponent {
   title = 'ngrx-smartish';
-  action = appAction();
+  action = appAction;
+  actionWithProp = appActionWithProp;
+  prop = 5;
   taco$ = selectTaco;
 }
