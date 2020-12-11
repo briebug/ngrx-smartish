@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { createAction, props } from '@ngrx/store';
-import { selectTaco } from './store';
+import { selectTaco, Taco, tacoInitialState, TACO_FEATURE_KEY } from './store';
 
 const appAction = createAction('[APP COMPONENT] Smartish Button Click');
 
 const appActionWithProp = createAction(
   '[APP COMPONENT] Smartish Button Click With Prop',
-  props<{ value: number }>()
+  props<{ taco: Taco }>()
 );
 
 @Component({
@@ -18,6 +18,9 @@ export class AppComponent {
   title = 'ngrx-smartish';
   action = appAction;
   actionWithProp = appActionWithProp;
-  prop = 5;
   taco$ = selectTaco;
+
+  taco = {
+    [TACO_FEATURE_KEY]: { ...tacoInitialState[TACO_FEATURE_KEY] } as Taco,
+  };
 }
