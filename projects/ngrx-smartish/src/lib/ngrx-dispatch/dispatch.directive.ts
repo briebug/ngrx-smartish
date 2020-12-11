@@ -14,7 +14,6 @@ const unknownAction = createAction(
 export class NgRxDispatchDirective<P, A extends ActionCreator> {
   @Input() action?: A;
   @Input() prop?: P;
-  @Input() propKey?: string;
 
   constructor(@Inject(DISPATCH_STORE_TOKEN) private store: Store) {}
 
@@ -31,9 +30,7 @@ export class NgRxDispatchDirective<P, A extends ActionCreator> {
   dispatch(): void {
     this.action
       ? this.store.dispatch(
-          this.action(
-            this.prop && this.propKey && { [this.propKey]: this.prop }
-          ) as Action
+          this.action(this.prop && { ...this.prop }) as Action
         )
       : this.store.dispatch(unknownAction());
   }

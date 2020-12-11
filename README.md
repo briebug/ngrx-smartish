@@ -21,7 +21,22 @@ const buttonClickedAction = createAction('[TACO COMPONENT] Button Clicked');
     template: `<button type="button" ngrxDispatch [action]="action">Click Me</button>`
 })
 export class TacoComponent {
-    action = buttonClickedAction();
+    action = buttonClickedAction
+}
+```
+
+You can also dispatch actions with props like so:
+
+```
+const buttonClickActionWithProp = createAction('[TACO COMPONENT], props<{ taco: Taco }>());
+
+@Component({
+    selector: 'app-taco',
+    template: `<button type="button" ngrxDispatch [action]="action" [prop]="tacoProp">Click Me</button>
+})
+export class TacoComponent {
+    action = buttonClickActionWithProp;
+    tacoProp = { taco: { } as Taco };
 }
 ```
 
