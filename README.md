@@ -1,27 +1,58 @@
 # NgRx Smartish
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+NgRx Smartish is a small utility library that makes creating "smartish" components in Angular a breeze.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Getting Started
 
-## Code scaffolding
+You will first need to install using `npm install @briebug/ngrx-smartish???`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Next you will need to import `NgrxSmartishModule` in `app.module`
 
-## Build
+## ngrxDispatch
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+With NgRx Smartish you can dispatch actions directly in your Angular Component's template without the need to dispatch an `@Output() EventEmitter` or injecting the `store`. You simply need to add the `ngrxDispatch` directive in your template and supply it a propless action as an @Input();
 
-## Running unit tests
+```
+const buttonClickedAction = createAction('[TACO COMPONENT] Button Clicked');
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@Component({
+    selector: 'app-taco',
+    template: `<button type="button" ngrxDispatch [action]="action">Click Me</button>`
+})
+export class TacoComponent {
+    action = buttonClickedAction();
+}
+```
 
-## Running end-to-end tests
+## ngrxSelector
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+With NgRx Smartish you can reference NgRx Selectors directly in your Angular Component's template without the need to inject the `store`. You simple need to add the `MemoizedSelector` in your component class and reference that property with the `ngrxSelector` pipe in your template.
 
-## Further help
+```
+import { selectError } from 'YOUR-STORE'
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+@Component({
+    selector: 'app-error',
+    template: `<p>{{ error$ | ngrxSelector | async }}</p>`
+})
+export class ErrorComponent {
+    error$ = selectError;
+}
+```
+
+
+
+## CONTRIBUTING
+
+### BUILD
+- You can build the library running `npm run build:smartish` or `ng build ngrx-smartish`
+- You can build the app running `npm run build` or `ng build`
+
+### SERVE
+- You can serve the app running `npm run start` or `ng serve`
+
+### TEST
+- You can run the library tests using `npm run test:smartish` or `ng test ngrx-smartish`
+- You can run the app tests using `npm run test` or `ng test`
+  
