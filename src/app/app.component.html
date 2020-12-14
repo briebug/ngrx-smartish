@@ -1,6 +1,6 @@
-<button type="button" ngrxDispatch [action]="action">Trigger Smartish Dispatch</button>
+<button type="button" [ngrxDispatch]="action">Trigger Smartish Dispatch</button>
 
-<button type="button" ngrxDispatch [action]="actionWithProp" [prop]="taco">Trigger Smartish Dispatch With Prop</button>
+<button type="button" [ngrxDispatch]="actionWithProp" [ngrxProp]="taco">Trigger Smartish Dispatch With Prop</button>
 
 <pre>
     {{ taco$ | ngrxSelector | async | json }}

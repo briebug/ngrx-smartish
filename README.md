@@ -18,7 +18,7 @@ const buttonClickedAction = createAction('[TACO COMPONENT] Button Clicked');
 
 @Component({
     selector: 'app-taco',
-    template: `<button type="button" ngrxDispatch [action]="action">Click Me</button>`
+    template: `<button type="button" [ngrxDispatch]="action">Click Me</button>`
 })
 export class TacoComponent {
     action = buttonClickedAction
@@ -32,7 +32,7 @@ const buttonClickActionWithProp = createAction('[TACO COMPONENT], props<{ taco: 
 
 @Component({
     selector: 'app-taco',
-    template: `<button type="button" ngrxDispatch [action]="action" [prop]="tacoProp">Click Me</button>
+    template: `<button type="button" [ngrxDispatch]="action" [ngrxProp]="tacoProp">Click Me</button>
 })
 export class TacoComponent {
     action = buttonClickActionWithProp;
