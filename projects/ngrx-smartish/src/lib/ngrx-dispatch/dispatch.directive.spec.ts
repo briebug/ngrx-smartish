@@ -2,7 +2,7 @@ import { NgRxDispatchDirective } from './dispatch.directive';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { Action, createAction } from '@ngrx/store';
+import { Action, ActionCreator, createAction, props } from '@ngrx/store';
 import { By } from '@angular/platform-browser';
 import { DISPATCH_STORE_TOKEN } from './token';
 import { dispatchFactoryFunction } from './factory';
@@ -93,7 +93,7 @@ describe('NgRxDispatchDirective', () => {
   it('should dispatch to store.dispatch with Input action if it exists', () => {
     // arrange
     const directive = new NgRxDispatchDirective(store);
-    const action = { type: 'Test Action' } as Action;
+    const action = createAction('Test Action');
     directive.action = action;
     spyOn(store, 'dispatch');
 
@@ -101,7 +101,23 @@ describe('NgRxDispatchDirective', () => {
     directive.dispatch();
 
     // assert
-    expect(store.dispatch).toHaveBeenCalledOnceWith(action);
+    expect(store.dispatch).toHaveBeenCalledOnceWith(action());
+  });
+  it('should dispatch to store.dispatch with Prop', () => {
+    // arrange
+    const directive = new NgRxDispatchDirective(store);
+    const action = createAction('Test Action', props<{ sum: number }>());
+    directive.action = action;
+    directive.ngrxProp = { sum: 5 };
+    spyOn(store, 'dispatch');
+
+    // act
+    directive.dispatch();
+
+    // assert
+    expect(store.dispatch).toHaveBeenCalledOnceWith(
+      action({ sum: 5 }) as Action
+    );
   });
   it('should dispatch unknown action if Input action is not defined', () => {
     // arrange

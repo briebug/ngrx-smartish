@@ -1,9 +1,13 @@
 import { TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import { NgrxSmartishModule } from 'projects/ngrx-smartish/src/lib/ngrx-smartish.module';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [NgrxSmartishModule],
+      providers: [provideMockStore({})],
       declarations: [AppComponent],
     }).compileComponents();
   });
