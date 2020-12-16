@@ -36,7 +36,7 @@ const addTaco = createAction('[TACO COMPONENT] Add Taco', props<{ taco: Taco }>(
 
 @Component({
     selector: 'app-taco',
-    template: `<button type="button" [ngrxDispatch]="actions.addTaco" [ngrxProp]="{ taco: form.value }">Click Me</button>
+    template: `<button type="button" [ngrxDispatch]="actions.addTaco" [ngrxProps]="{ taco: form.value }">Click Me</button>
 })
 export class TacoComponent {
     actions = { addTaco }

@@ -108,7 +108,7 @@ describe('NgRxDispatchDirective', () => {
     const directive = new NgRxDispatchDirective(store);
     const action = createAction('Test Action', props<{ sum: number }>());
     directive.action = action;
-    directive.ngrxProp = { sum: 5 };
+    directive.ngrxProps = { sum: 5 };
     spyOn(store, 'dispatch');
 
     // act

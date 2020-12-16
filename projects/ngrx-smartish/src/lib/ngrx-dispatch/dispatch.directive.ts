@@ -1,7 +1,6 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Directive, HostListener, Inject, Input } from '@angular/core';
-import { ActionCreator, createAction, Creator, Store } from '@ngrx/store';
-import { Action, TypedAction } from '@ngrx/store/src/models';
+import { ActionCreator, createAction, Store } from '@ngrx/store';
+import { Action } from '@ngrx/store/src/models';
 import { DISPATCH_STORE_TOKEN } from './token';
 
 const unknownAction = createAction(
@@ -13,7 +12,7 @@ const unknownAction = createAction(
 })
 export class NgRxDispatchDirective<P, A extends ActionCreator> {
   @Input('ngrxDispatch') action?: A;
-  @Input() ngrxProp?: P;
+  @Input() ngrxProps?: P;
 
   constructor(@Inject(DISPATCH_STORE_TOKEN) private store: Store) {}
 
@@ -30,7 +29,7 @@ export class NgRxDispatchDirective<P, A extends ActionCreator> {
   dispatch(): void {
     this.action
       ? this.store.dispatch(
-          this.action(this.ngrxProp && { ...this.ngrxProp }) as Action
+          this.action(this.ngrxProps && { ...this.ngrxProps }) as Action
         )
       : this.store.dispatch(unknownAction());
   }
