@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { SELECT_STORE_TOKEN } from './token';
 
 @Pipe({
-  name: 'ngrxSelector',
+  name: 'ngrxSelect',
 })
 export class NgRxSelectorPipe<TResult, TState = object>
   implements PipeTransform {

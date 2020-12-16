@@ -40,7 +40,7 @@ export class TacoComponent {
 }
 ```
 
-## ngrxSelector
+## ngrxSelect
 
 With NgRx Smartish you can reference NgRx Selectors directly in your Angular Component's template without the need to inject the `store`. You simple need to add the `MemoizedSelector` in your component class and reference that property with the `ngrxSelector` pipe in your template.
 
@@ -49,7 +49,7 @@ import { selectError } from 'YOUR-STORE'
 
 @Component({
     selector: 'app-error',
-    template: `<p>{{ error$ | ngrxSelector | async }}</p>`
+    template: `<p>{{ error$ | ngrxSelect | async }}</p>`
 })
 export class ErrorComponent {
     error$ = selectError;
