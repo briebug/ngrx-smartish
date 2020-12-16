@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -10,6 +11,7 @@ import { TacoStoreModule } from './store';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     NgrxSmartishModule,
     TacoStoreModule,
     StoreModule.forRoot({}),

@@ -14,29 +14,33 @@ Next you will need to import `NgrxSmartishModule` in `app.module`
 With NgRx Smartish you can dispatch actions directly in your Angular Component's template without the need to dispatch an `@Output() EventEmitter` or injecting the `store`. You simply need to add the `ngrxDispatch` directive in your template and supply it a propless action as an @Input();
 
 ```
-const buttonClickedAction = createAction('[TACO COMPONENT] Button Clicked');
+const increment = createAction('[TACO COMPONENT] Increment');
+const decrement = createAction('[TACO COMPONENT] Decrement');
 
 @Component({
     selector: 'app-taco',
-    template: `<button type="button" [ngrxDispatch]="action">Click Me</button>`
+    template: `
+        <button type="button" [ngrxDispatch]="actions.increment">+</button>
+        <button type="button" [ngrxDispatch]="actions.decrement">-</button>
+    `
 })
 export class TacoComponent {
-    action = buttonClickedAction
+    actions = { increment, decrement }
 }
 ```
 
 You can also dispatch actions with props like so:
 
 ```
-const buttonClickActionWithProp = createAction('[TACO COMPONENT], props<{ taco: Taco }>());
+const addTaco = createAction('[TACO COMPONENT] Add Taco', props<{ taco: Taco }>());
 
 @Component({
     selector: 'app-taco',
-    template: `<button type="button" [ngrxDispatch]="action" [ngrxProp]="tacoProp">Click Me</button>
+    template: `<button type="button" [ngrxDispatch]="actions.addTaco" [ngrxProp]="{ taco: form.value }">Click Me</button>
 })
 export class TacoComponent {
-    action = buttonClickActionWithProp;
-    tacoProp = { taco: { } as Taco };
+    actions = { addTaco }
+    form: FormGroup;
 }
 ```
 
@@ -49,10 +53,10 @@ import { selectError } from 'YOUR-STORE'
 
 @Component({
     selector: 'app-error',
-    template: `<p>{{ error$ | ngrxSelect | async }}</p>`
+    template: `<p>{{ selectors.selectError | ngrxSelect | async }}</p>`
 })
 export class ErrorComponent {
-    error$ = selectError;
+    selectors = { selectError };
 }
 ```
 

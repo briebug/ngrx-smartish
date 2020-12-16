@@ -1,7 +1,13 @@
-<button type="button" [ngrxDispatch]="action">Trigger Smartish Dispatch</button>
+<form [formGroup]="form">
+    <input formControlName="taco" />
+</form>
 
-<button type="button" [ngrxDispatch]="actionWithProp" [ngrxProp]="taco">Trigger Smartish Dispatch With Prop</button>
+<button type="button" [ngrxDispatch]="actions.addTaco" [ngrxProp]="{ taco: form.value }">Add Taco</button>
 
 <pre>
-    {{ taco$ | ngrxSelect | async | json }}
+    {{ selectors.selectTaco | ngrxSelect | async | json }}
 </pre>
+
+<h5>Quantity:</h5>
+<button [ngrxDispatch]="actions.increment">+</button>
+<button [ngrxDispatch]="actions.decrement">-</button>
