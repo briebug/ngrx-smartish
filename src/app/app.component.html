@@ -2,7 +2,7 @@
     <input formControlName="taco" />
 </form>
 
-<button type="button" [ngrxDispatch]="actions.addTaco" [ngrxProp]="{ taco: form.value }">Add Taco</button>
+<button type="button" [ngrxDispatch]="actions.addTaco" [ngrxProps]="{ taco: form.value }">Add Taco</button>
 
 <pre>
     {{ selectors.selectTaco | ngrxSelect | async | json }}
