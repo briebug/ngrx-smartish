@@ -1,0 +1,5 @@
+<!-- {{ taco$ | async | json }} -->
+
+{{ store.select(selectors.selectTaco) | async | json }}
+
+<button (click)="store.dispatch(actions.tacoAction())">Taco Button</button>

@@ -4,8 +4,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { Action, ActionCreator, createAction, props } from '@ngrx/store';
 import { By } from '@angular/platform-browser';
-import { DISPATCH_STORE_TOKEN } from './token';
 import { dispatchFactoryFunction } from './factory';
+import { SMARTISH_STORE_TOKEN } from '../token';
 
 const unknownAction = createAction(
   '[NGRX DISPATCH] An Unknown Action was dispatched. Please provide an action as an input on the ngrxDirective instance'
@@ -25,7 +25,7 @@ describe('NgRxDispatchDirective', () => {
     fixture = TestBed.configureTestingModule({
       declarations: [NgRxDispatchDirective, TestNgrxDispatchComponent],
       providers: [
-        { provide: DISPATCH_STORE_TOKEN, useFactory: dispatchFactoryFunction },
+        { provide: SMARTISH_STORE_TOKEN, useFactory: dispatchFactoryFunction },
         provideMockStore({ initialState }),
       ],
     }).createComponent(TestNgrxDispatchComponent);
