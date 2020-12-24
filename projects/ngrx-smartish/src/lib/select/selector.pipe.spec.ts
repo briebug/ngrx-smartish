@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { createSelector, MemoizedSelector } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { selectFactoryFunction } from './factory';
+import { smartishStoreFactory } from '../factory';
+import { SMARTISH_STORE_TOKEN } from '../token';
 import { NgRxSelectorPipe } from './selector.pipe';
-import { SELECT_STORE_TOKEN } from './token';
 
 describe('SelectorPipe', () => {
   let store: MockStore;
@@ -13,7 +13,7 @@ describe('SelectorPipe', () => {
     TestBed.configureTestingModule({
       declarations: [NgRxSelectorPipe],
       providers: [
-        { provide: SELECT_STORE_TOKEN, useFactory: selectFactoryFunction },
+        { provide: SMARTISH_STORE_TOKEN, useFactory: smartishStoreFactory },
         provideMockStore({ initialState }),
       ],
     });
