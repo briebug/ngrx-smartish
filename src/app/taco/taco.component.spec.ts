@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideMockStore } from '@ngrx/store/testing';
+import { NgRxSmartishTestingModule } from 'projects/ngrx-smartish/src/lib';
 import { TacoComponent } from './taco.component';
 
 describe('TacoComponent', () => {
@@ -8,9 +9,10 @@ describe('TacoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TacoComponent ]
-    })
-    .compileComponents();
+      declarations: [TacoComponent],
+      imports: [NgRxSmartishTestingModule],
+      providers: [provideMockStore({})],
+    }).compileComponents();
   });
 
   beforeEach(() => {
