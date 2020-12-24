@@ -1,13 +1,27 @@
 # NgRx Smartish
 
-NgRx Smartish is a small utility library that makes creating "smartish" components in Angular a breeze.
+NgRx Smartish is a small utility library that makes creating "smartish" components in Angular a breeze. Smartish Components mixed with NgRx, provide a clean and declartive approach to building applications in Angular. 
 
 
 ## Getting Started
 
 You will first need to install using `npm install @briebug/ngrx-smartish???`
 
-Next you will need to import `NgrxSmartishModule` in `app.module`
+Next you will need to import `NgrxSmartishModule.forRoot` in `app.module` as well as provide store using the `SMARTISH_STORE_TOKEN`.
+
+```
+import { NgRxSmartishModule, SMARTISH_STORE_TOKEN } from '@briebug/ngrx-smartish';
+imoprt { StoreModule, Store } from '@ngrx/store';
+
+@NgModule({
+  imports: [
+      NgRxSmartishModule.forRoot(),
+      StoreModule.forRoot({...})
+  ],
+  providerss: [{ provide: SMARTISH_STORE_TOKEN, useClass: Store }]
+})
+export class AppModule {}
+```
 
 ## ngrxDispatch
 
@@ -60,7 +74,19 @@ export class ErrorComponent {
 }
 ```
 
+## NgRxSmartishComponent
 
+With NgRx Smartish you can reference your NgRx store directly in your Components classes (or templates) without providing the store in the constructor. It's as easy as having your component extends `NgRxSmartishComponent`. 
+
+```
+@Component({
+    selector: 'app-tacos',
+    template: `<app-taco *ngFor="let taco of (tacos$ | async)" [taco]="taco></app-taco>`
+})
+export class TacosComponent extends NgRxSmartishComponent {
+    tacos$ = store.select(selectTacos);
+}
+```
 
 ## CONTRIBUTING
 
