@@ -5,7 +5,7 @@ NgRx Smartish is a small utility library that makes creating "smartish" componen
 
 ## Getting Started
 
-You will first need to install using `npm install @briebug/ngrx-smartish???`
+You can install the package using `npm install @briebug/ngrx-smartish???`
 
 Next you will need to import `NgrxSmartishModule.forRoot` in `app.module` as well as provide store using the `SMARTISH_STORE_TOKEN`.
 
@@ -18,7 +18,7 @@ imoprt { StoreModule, Store } from '@ngrx/store';
       NgRxSmartishModule.forRoot(),
       StoreModule.forRoot({...})
   ],
-  providerss: [{ provide: SMARTISH_STORE_TOKEN, useClass: Store }]
+  providers: [{ provide: SMARTISH_STORE_TOKEN, useClass: Store }]
 })
 export class AppModule {}
 ```
