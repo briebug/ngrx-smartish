@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { createAction, Store } from '@ngrx/store';
+import { createAction } from '@ngrx/store';
 import { NgRxSmartishComponent } from 'projects/ngrx-smartish/src/public-api';
 import { selectTaco } from '../store';
 
