@@ -8,16 +8,13 @@ const addTaco = createAction(
   props<{ taco: Taco }>()
 );
 
-const increment = createAction('[APP COMPONENT] Increment');
-const decrement = createAction('[APP COMPONENT] Decrement');
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  actions = { addTaco, increment, decrement };
+  actions = { addTaco };
   selectors = { selectTaco };
 
   form: FormGroup = new FormGroup({

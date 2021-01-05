@@ -8,9 +8,10 @@ import { SMARTISH_STORE_TOKEN } from 'projects/ngrx-smartish/src/public-api';
 import { AppComponent } from './app.component';
 import { TacoStoreModule } from './store';
 import { TacoComponent } from './taco/taco.component';
+import { QuantityComponent } from './quantity/quantity.component';
 
 @NgModule({
-  declarations: [AppComponent, TacoComponent],
+  declarations: [AppComponent, TacoComponent, QuantityComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
