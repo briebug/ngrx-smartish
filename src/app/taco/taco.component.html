@@ -1,5 +1,7 @@
-<!-- {{ taco$ | async | json }} -->
+<strong>ngrxSelect Pipe</strong>
+<pre>
+    {{ selectors.selectTaco | ngrxSelect | async | json }}
+</pre>
 
-{{ store.select(selectors.selectTaco) | async | json }}
 
-<button (click)="store.dispatch(actions.tacoAction())">Taco Button</button>
+<button (click)="store.dispatch(actions.tacoAction())">Taco Button Dispatches via store.dispatch inside template</button>

@@ -1,20 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgRxSmartishTestingModule } from 'projects/ngrx-smartish/src/lib';
-import { TacoComponent } from './taco.component';
 
-describe('TacoComponent', () => {
-  let component: TacoComponent;
-  let fixture: ComponentFixture<TacoComponent>;
+import { QuantityComponent } from './quantity.component';
+
+describe('QuantityComponent', () => {
+  let component: QuantityComponent;
+  let fixture: ComponentFixture<QuantityComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TacoComponent],
+      declarations: [QuantityComponent],
       imports: [NgRxSmartishTestingModule.forRoot()],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TacoComponent);
+    fixture = TestBed.createComponent(QuantityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
