@@ -1,5 +1,5 @@
 /*
- * Public API Surface of ngrx-dispatch
+ * Public API Surface of ngrx-smartish
  */
 
 export * from './lib';

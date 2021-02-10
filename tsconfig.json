@@ -20,9 +20,8 @@
       "dom"
     ],
     "paths": {
-      "ngrx-dispatch": [
-        "dist/ngrx-dispatch/ngrx-dispatch",
-        "dist/ngrx-dispatch"
+      "ngrx-smartish": [
+        "dist/ngrx-smartish"
       ]
     }
   },

@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../../coverage/ngrx-dispatch'),
+      dir: require('path').join(__dirname, '../../coverage/ngrx-smartish'),
       subdir: '.',
       reporters: [
         { type: 'html' },
