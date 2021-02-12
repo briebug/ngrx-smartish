@@ -107,7 +107,7 @@ describe('NgRxDispatchDirective', () => {
     directive.dispatch();
 
     // assert
-    expect(store.dispatch).toHaveBeenCalledOnceWith(action());
+    expect(store.dispatch).toHaveBeenCalledWith(action());
   });
   it('should dispatch to store.dispatch with Prop', () => {
     // arrange
@@ -121,9 +121,7 @@ describe('NgRxDispatchDirective', () => {
     directive.dispatch();
 
     // assert
-    expect(store.dispatch).toHaveBeenCalledOnceWith(
-      action({ sum: 5 }) as Action
-    );
+    expect(store.dispatch).toHaveBeenCalledWith(action({ sum: 5 }) as Action);
   });
   it('should dispatch unknown action if Input action is not defined', () => {
     // arrange
@@ -135,6 +133,6 @@ describe('NgRxDispatchDirective', () => {
     directive.dispatch();
 
     // assert
-    expect(store.dispatch).toHaveBeenCalledOnceWith(action);
+    expect(store.dispatch).toHaveBeenCalledWith(action);
   });
 });
