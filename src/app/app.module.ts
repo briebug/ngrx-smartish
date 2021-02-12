@@ -15,7 +15,7 @@ import { QuantityComponent } from './quantity/quantity.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    NgRxSmartishModule.forRoot(),
+    NgRxSmartishModule,
     TacoStoreModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument(),

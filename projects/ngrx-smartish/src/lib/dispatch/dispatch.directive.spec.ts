@@ -2,14 +2,15 @@ import { NgRxDispatchDirective } from './dispatch.directive';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { Action, ActionCreator, createAction, props } from '@ngrx/store';
+import { Action, ActionCreator, createAction, props, Store } from '@ngrx/store';
 import { By } from '@angular/platform-browser';
 import { SMARTISH_STORE_TOKEN } from '../token';
-import { smartishStoreFactory } from '../factory';
 
 const unknownAction = createAction(
   '[NGRX DISPATCH] An Unknown Action was dispatched. Please provide an action as an input on the ngrxDirective instance'
 );
+
+const smartishStoreFactory = (store: Store): Store => store;
 
 @Component({
   template: `<button type="button" ngrxDispatch></button>`,
@@ -25,7 +26,11 @@ describe('NgRxDispatchDirective', () => {
     fixture = TestBed.configureTestingModule({
       declarations: [NgRxDispatchDirective, TestNgrxDispatchComponent],
       providers: [
-        { provide: SMARTISH_STORE_TOKEN, useFactory: smartishStoreFactory },
+        {
+          provide: SMARTISH_STORE_TOKEN,
+          useFactory: smartishStoreFactory,
+          deps: [Store],
+        },
         provideMockStore({ initialState }),
       ],
     }).createComponent(TestNgrxDispatchComponent);
@@ -36,6 +41,7 @@ describe('NgRxDispatchDirective', () => {
 
   it('should create an instance', () => {
     const directive = new NgRxDispatchDirective(store);
+    expect(directive).toBeTruthy();
   });
 
   it('click event calls HostListener click', () => {

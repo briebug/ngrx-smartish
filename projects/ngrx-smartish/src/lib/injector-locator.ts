@@ -1,13 +1,8 @@
-import { Injector } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 
+@Injectable()
 export class InjectorLocator {
-  private static _injector: Injector;
-
-  static get injector(): Injector {
-    return InjectorLocator._injector;
-  }
-
   constructor(injector: Injector) {
-    InjectorLocator._injector = injector;
+    (InjectorLocator as any)['_injector'] = injector; // tslint:disable-line
   }
 }

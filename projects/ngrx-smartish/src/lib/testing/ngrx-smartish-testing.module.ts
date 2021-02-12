@@ -11,7 +11,7 @@ import { SMARTISH_STORE_TOKEN } from '../token';
 
 @NgModule({
   declarations: [],
-  imports: [NgRxSmartishModule.forRoot()],
+  imports: [NgRxSmartishModule],
   providers: [{ provide: SMARTISH_STORE_TOKEN, useClass: MockStore }],
   exports: [NgRxDispatchDirective, NgRxSelectorPipe],
 })
