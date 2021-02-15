@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActionCreator, createAction, props } from '@ngrx/store';
-import { selectTaco, Taco, tacoInitialState, TACO_FEATURE_KEY } from './store';
+import { createAction, props } from '@ngrx/store';
+import { selectTaco, Taco } from './store';
 
 const addTaco = createAction(
   '[APP COMPONENT] Add Taco',

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgRxSmartishTestingModule } from 'projects/ngrx-smartish/src/lib';
+import { NgRxSmartishTestingModule } from '../../../projects/ngrx-smartish/src/lib';
 import { TacoComponent } from './taco.component';
 
 describe('TacoComponent', () => {

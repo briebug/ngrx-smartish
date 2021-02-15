@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { createAction } from '@ngrx/store';
-import { NgRxSmartishComponent } from 'projects/ngrx-smartish/src/public-api';
+import { NgRxSmartishComponent } from '../../../projects/ngrx-smartish/src/lib';
 import { selectTaco } from '../store';
 
 const tacoAction = createAction(

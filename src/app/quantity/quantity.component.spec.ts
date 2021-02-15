@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgRxSmartishTestingModule } from 'projects/ngrx-smartish/src/lib';
+import { MockStoreConfig } from '@ngrx/store/testing';
+import { NgRxSmartishTestingModule } from '../../../projects/ngrx-smartish/src/lib';
 
 import { QuantityComponent } from './quantity.component';
 
@@ -7,10 +8,12 @@ describe('QuantityComponent', () => {
   let component: QuantityComponent;
   let fixture: ComponentFixture<QuantityComponent>;
 
+  const config = { initialState: {} } as MockStoreConfig<any>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [QuantityComponent],
-      imports: [NgRxSmartishTestingModule.forRoot()],
+      imports: [NgRxSmartishTestingModule.forRoot(config)],
     }).compileComponents();
   });
 

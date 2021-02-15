@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
-import { NgRxSmartishTestingModule } from 'projects/ngrx-smartish/src/lib';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgRxSmartishTestingModule } from '../../projects/ngrx-smartish/src/lib';
 import { AppComponent } from './app.component';
+import { QuantityComponent } from './quantity/quantity.component';
+import { TacoComponent } from './taco/taco.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgRxSmartishTestingModule.forRoot()],
-      declarations: [AppComponent],
+      imports: [NgRxSmartishTestingModule.forRoot(), ReactiveFormsModule],
+      declarations: [AppComponent, QuantityComponent, TacoComponent],
     }).compileComponents();
   });
 
