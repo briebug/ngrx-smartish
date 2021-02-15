@@ -1,25 +1,101 @@
 # NgRx Smartish
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
+NgRx Smartish is a small utility library that makes creating "smartish" components in Angular a breeze. Smartish Components mixed with NgRx, provide a clean and declartive approach to building applications in Angular. 
 
-## Code scaffolding
 
-Run `ng generate component component-name --project ngrx-smartish` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngrx-smartish`.
+## Getting Started
 
-> Note: Don't forget to add `--project ngrx-smartish` or else it will be added to the default project in your `angular.json` file.
+You can install the package using `npm install @briebug/ngrx-smartish`
 
-## Build
+Next you will need to import `NgrxSmartishModule` in `app.module` as well as provide store using the `SMARTISH_STORE_TOKEN`.
 
-Run `ng build ngrx-smartish` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+import { NgRxSmartishModule, SMARTISH_STORE_TOKEN } from '@briebug/ngrx-smartish';
+imoprt { StoreModule, Store } from '@ngrx/store';
 
-## Publishing
+@NgModule({
+  imports: [
+      NgRxSmartishModule,
+      StoreModule.forRoot({...})
+  ],
+  providers: [{ provide: SMARTISH_STORE_TOKEN, useClass: Store }]
+})
+export class AppModule {}
+```
 
-After building your library with `ng build ngrx-smartish`, go to the dist folder `cd dist/ngrx-smartish` and run `npm publish`.
+## ngrxDispatch
 
-## Running unit tests
+With NgRx Smartish you can dispatch actions directly in your Angular Component's template without the need to dispatch an `@Output() EventEmitter` or injecting the `store`. You simply need to add the `ngrxDispatch` directive in your template and supply it a propless action as an @Input();
 
-Run `ng test ngrx-smartish` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+const increment = createAction('[TACO COMPONENT] Increment');
+const decrement = createAction('[TACO COMPONENT] Decrement');
 
-## Further help
+@Component({
+    selector: 'app-taco',
+    template: `
+        <button type="button" [ngrxDispatch]="actions.increment">+</button>
+        <button type="button" [ngrxDispatch]="actions.decrement">-</button>
+    `
+})
+export class TacoComponent {
+    actions = { increment, decrement }
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+You can also dispatch actions with props like so:
+
+```
+const addTaco = createAction('[TACO COMPONENT] Add Taco', props<{ taco: Taco }>());
+
+@Component({
+    selector: 'app-taco',
+    template: `<button type="button" [ngrxDispatch]="actions.addTaco" [ngrxProps]="{ taco: form.value }">Click Me</button>
+})
+export class TacoComponent {
+    actions = { addTaco }
+    form: FormGroup;
+}
+```
+
+## ngrxSelect
+
+With NgRx Smartish you can reference NgRx Selectors directly in your Angular Component's template without the need to inject the `store`. You simple need to add the `MemoizedSelector` in your component class and reference that property with the `ngrxSelector` pipe in your template.
+
+```
+import { selectError } from 'YOUR-STORE'
+
+@Component({
+    selector: 'app-error',
+    template: `<p>{{ selectors.selectError | ngrxSelect | async }}</p>`
+})
+export class ErrorComponent {
+    selectors = { selectError };
+}
+```
+
+## NgRxSmartishComponent
+
+With NgRx Smartish you can reference your NgRx store directly in your Components classes (or templates) without providing the store in the constructor. It's as easy as having your component extends `NgRxSmartishComponent`. 
+
+```
+@Component({
+    selector: 'app-tacos',
+    template: `<app-taco *ngFor="let taco of (tacos$ | async)" [taco]="taco></app-taco>`
+})
+export class TacosComponent extends NgRxSmartishComponent {
+    tacos$ = store.select(selectTacos);
+}
+```
+
+## Testing
+Testing with NgRxSmartish is made simple with the `NgRxSmartishTestingModule`. Simply just import it into your `TestBed` with your `MockStoreConfig` inside of `forRoot()`
+
+```
+describe('YourSmartishComponent', () => {
+  beforeEach(async () => {
+    imports: [NgRxSmartishTestingModule.forRoot({ initialState: {...}})],
+    declarations: [YourSmartishComponent]
+  });
+});
+```
