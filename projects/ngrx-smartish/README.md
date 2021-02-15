@@ -89,9 +89,10 @@ export class TacosComponent extends NgRxSmartishComponent {
 ```
 
 ## Testing
-Testing with NgRxSmartish is made simple with the `NgRxSmartishTestingModule`. Simply just import it into your `TestBed` with your `MockStoreConfig` inside of `forRoot()`
+Testing with NgRxSmartish is made simple with the `NgRxSmartishTestingModule`. Just import `NgRxSmartishTestingModule` into your `TestBed` with the `forRoot()` static method. You can also pass an optional `MockStoreConfig` inside of `forRoot()` to save you from having to provide `provideMockStore(...)` in your tests. 
 
 ```
+const config = { };
 describe('YourSmartishComponent', () => {
   beforeEach(async () => {
     imports: [NgRxSmartishTestingModule.forRoot({ initialState: {...}})],
