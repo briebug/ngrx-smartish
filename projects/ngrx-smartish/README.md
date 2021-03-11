@@ -74,6 +74,38 @@ export class ErrorComponent {
 }
 ```
 
+## dispatchableActionFrom
+With NgRx Smartish `dispatchableActionFrom` you can call `dispatch` on your actions directly in your component templates. 
+
+```
+import { dispatchableActionFrom } from '@briebug/ngrx-smartish';
+import { tacoAdded } from '...my-actions';
+
+@Component({
+    selector: 'app-component',
+    template: `<button (click)="addTaco.dispatch($event)">Add Taco</button>
+})
+export class MyComponent {
+    addTaco = dispatchableActionFrom(tacoAdded);
+}
+```
+
+## makeDispatcherFor
+With NgRx Smartish `makeDispatcherFor` you can automatically dispatch actions in your component templates. (Note: This is similar to `dispatchableActionsFrom` but it calls dispatch automatically for you)
+
+```
+import { makeDispatcherFor } from '@briebug/ngrx-smartish';
+import { tacoAdded } from '...my-actions';
+
+@Component({
+    selector: 'app-component',
+    template: `<button (click)="addTaco($event)">Add Taco</button>
+})
+export class MyComponent {
+    addTaco = makeDispatcherFor(tacoAdded);
+}
+```
+
 ## NgRxSmartishComponent
 
 With NgRx Smartish you can reference your NgRx store directly in your Components classes (or templates) without providing the store in the constructor. It's as easy as having your component extends `NgRxSmartishComponent`. 
