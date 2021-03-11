@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { createAction } from '@ngrx/store';
-import { NgRxSmartishComponent } from '../../../projects/ngrx-smartish/src/lib';
+import { NgRxSmartishComponent, dispatchableFrom } from '../../../projects/ngrx-smartish/src/lib';
 import { selectTaco } from '../store';
 
 const tacoAction = createAction(
@@ -16,4 +16,6 @@ export class TacoComponent extends NgRxSmartishComponent {
   taco$ = this.store.select(selectTaco);
   selectors = { selectTaco };
   actions = { tacoAction };
+
+  action = dispatchableFrom(tacoAction);
 }

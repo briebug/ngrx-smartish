@@ -20,7 +20,7 @@
       "dom"
     ],
     "paths": {
-      "ngrx-smartish": [
+      "@briebug/ngrx-smartish": [
         "dist/ngrx-smartish"
       ]
     }
