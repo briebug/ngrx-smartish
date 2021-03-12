@@ -2,7 +2,7 @@
     <input formControlName="taco" />
 </form>
 
-<button type="button" [ngrxDispatch]="actions.addTaco" [ngrxProps]="{ taco: form.value }">Add Taco via ngrxDispatch Directive</button>
+<button type="button" (click)="addTaco(form.value)">Add Taco via ngrxDispatch Directive</button>
 
 <app-quantity></app-quantity>
 

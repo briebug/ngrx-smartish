@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { createAction } from '@ngrx/store';
+import { makeDispatcherFor } from 'projects/ngrx-smartish/src/lib';
 
 const increment = createAction('[QUANTITY COMPONENT] Increment');
 const decrement = createAction('[QUANTITY COMPONENT] Decrement');
@@ -10,5 +11,6 @@ const decrement = createAction('[QUANTITY COMPONENT] Decrement');
   styleUrls: ['./quantity.component.scss'],
 })
 export class QuantityComponent {
-  actions = { increment, decrement };
+  increment = makeDispatcherFor(increment);
+  decrement = makeDispatcherFor(decrement);
 }
