@@ -23,43 +23,9 @@ imoprt { StoreModule, Store } from '@ngrx/store';
 export class AppModule {}
 ```
 
-## ngrxDispatch
 
-With NgRx Smartish you can dispatch actions directly in your Angular Component's template without the need to dispatch an `@Output() EventEmitter` or injecting the `store`. You simply need to add the `ngrxDispatch` directive in your template and supply it a propless action as an @Input();
-
-```
-const increment = createAction('[TACO COMPONENT] Increment');
-const decrement = createAction('[TACO COMPONENT] Decrement');
-
-@Component({
-    selector: 'app-taco',
-    template: `
-        <button type="button" [ngrxDispatch]="actions.increment">+</button>
-        <button type="button" [ngrxDispatch]="actions.decrement">-</button>
-    `
-})
-export class TacoComponent {
-    actions = { increment, decrement }
-}
-```
-
-You can also dispatch actions with props like so:
-
-```
-const addTaco = createAction('[TACO COMPONENT] Add Taco', props<{ taco: Taco }>());
-
-@Component({
-    selector: 'app-taco',
-    template: `<button type="button" [ngrxDispatch]="actions.addTaco" [ngrxProps]="{ taco: form.value }">Click Me</button>
-})
-export class TacoComponent {
-    actions = { addTaco }
-    form: FormGroup;
-}
-```
-
-## ngrxSelect
-
+## SmartSelect
+### ngrxSelect
 With NgRx Smartish you can reference NgRx Selectors directly in your Angular Component's template without the need to inject the `store`. You simple need to add the `MemoizedSelector` in your component class and reference that property with the `ngrxSelector` pipe in your template.
 
 ```
@@ -74,7 +40,11 @@ export class ErrorComponent {
 }
 ```
 
-## dispatchableActionFrom
+## SmartDispatch
+
+With NgRx Smartish you can dispatch actions directly in your Angular Component's template without the need to dispatch an `@Output() EventEmitter` or injecting the `store`. You simply can use either the `dispatchableActionFrom` or `makeDispatcherForm` smart methods.
+
+### dispatchableActionFrom
 With NgRx Smartish `dispatchableActionFrom` you can call `dispatch` on your actions directly in your component templates. 
 
 ```
@@ -90,7 +60,7 @@ export class MyComponent {
 }
 ```
 
-## makeDispatcherFor
+### makeDispatcherFor
 With NgRx Smartish `makeDispatcherFor` you can automatically dispatch actions in your component templates. (Note: This is similar to `dispatchableActionsFrom` but it calls dispatch automatically for you)
 
 ```

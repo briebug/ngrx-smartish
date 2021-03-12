@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Inject, InjectionToken, Injector, NgModule } from '@angular/core';
-import { NgRxDispatchDirective } from './dispatch/dispatch.directive';
 import { InjectorLocator } from './injector-locator';
 import { NgRxSelectorPipe } from './select/selector.pipe';
 
@@ -14,7 +13,7 @@ export function injectorLocationFactory(injector: Injector) {
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [NgRxDispatchDirective, NgRxSelectorPipe],
+  declarations: [NgRxSelectorPipe],
   providers: [
     {
       provide: INJECTOR_LOCATOR_TOKEN,
@@ -22,7 +21,7 @@ export function injectorLocationFactory(injector: Injector) {
       deps: [Injector],
     },
   ],
-  exports: [NgRxDispatchDirective, NgRxSelectorPipe],
+  exports: [NgRxSelectorPipe],
 })
 export class NgRxSmartishModule {
   constructor(

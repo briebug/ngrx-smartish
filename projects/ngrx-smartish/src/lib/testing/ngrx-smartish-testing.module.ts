@@ -4,7 +4,6 @@ import {
   MockStoreConfig,
   provideMockStore,
 } from '@ngrx/store/testing';
-import { NgRxDispatchDirective } from '../dispatch/dispatch.directive';
 import { NgRxSmartishModule } from '../ngrx-smartish.module';
 import { NgRxSelectorPipe } from '../select/selector.pipe';
 import { SMARTISH_STORE_TOKEN } from '../token';
@@ -13,7 +12,7 @@ import { SMARTISH_STORE_TOKEN } from '../token';
   declarations: [],
   imports: [NgRxSmartishModule],
   providers: [{ provide: SMARTISH_STORE_TOKEN, useClass: MockStore }],
-  exports: [NgRxDispatchDirective, NgRxSelectorPipe],
+  exports: [NgRxSelectorPipe],
 })
 export class NgRxSmartishTestingModule {
   static forRoot(
