@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { SMARTISH_STORE_TOKEN } from '../token';
 
 @Pipe({
-  name: 'ngrxSelect',
+  name: 'smartSelect',
 })
 export class NgRxSelectorPipe<TResult, TState = object>
   implements PipeTransform {

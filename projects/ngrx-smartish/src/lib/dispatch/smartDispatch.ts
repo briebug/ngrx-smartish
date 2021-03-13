@@ -3,7 +3,7 @@ import { Creator, FunctionWithParametersType } from '@ngrx/store/src/models';
 import { InjectorLocator } from '../injector-locator';
 import { SMARTISH_STORE_TOKEN } from '../token';
 
-export const makeDispatcherFor = <
+export const smartDispatch = <
   T extends string = string,
   C extends Creator = Creator,
   P extends any[] = any[],

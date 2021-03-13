@@ -25,15 +25,14 @@ export class AppModule {}
 
 
 ## SmartSelect
-### ngrxSelect
-With NgRx Smartish you can reference NgRx Selectors directly in your Angular Component's template without the need to inject the `store`. You simple need to add the `MemoizedSelector` in your component class and reference that property with the `ngrxSelector` pipe in your template.
+With NgRx Smartish you can reference NgRx Selectors directly in your Angular Component's template without the need to inject the `store`. You simple need to add the `MemoizedSelector` in your component class and reference that property with the `smartSelector` pipe in your template.
 
 ```
 import { selectError } from 'YOUR-STORE'
 
 @Component({
     selector: 'app-error',
-    template: `<p>{{ selectors.selectError | ngrxSelect | async }}</p>`
+    template: `<p>{{ selectors.selectError | smartSelect | async }}</p>`
 })
 export class ErrorComponent {
     selectors = { selectError };
@@ -42,13 +41,13 @@ export class ErrorComponent {
 
 ## SmartDispatch
 
-With NgRx Smartish you can dispatch actions directly in your Angular Component's template without the need to dispatch an `@Output() EventEmitter` or injecting the `store`. You simply can use either the `dispatchableActionFrom` or `makeDispatcherForm` smart methods.
+With NgRx Smartish you can dispatch actions directly in your Angular Component's template without the need to dispatch an `@Output() EventEmitter` or injecting the `store`. You simply can use either the `smartDispatch` or `smartAction` methods.
 
-### dispatchableActionFrom
-With NgRx Smartish `dispatchableActionFrom` you can call `dispatch` on your actions directly in your component templates. 
+### smartAction
+With NgRx Smartish `smartAction` you can call `dispatch` on your actions directly in your component templates. 
 
 ```
-import { dispatchableActionFrom } from '@briebug/ngrx-smartish';
+import { smartAction } from '@briebug/ngrx-smartish';
 import { tacoAdded } from '...my-actions';
 
 @Component({
@@ -56,15 +55,15 @@ import { tacoAdded } from '...my-actions';
     template: `<button (click)="addTaco.dispatch($event)">Add Taco</button>
 })
 export class MyComponent {
-    addTaco = dispatchableActionFrom(tacoAdded);
+    addTaco = smartAction(tacoAdded);
 }
 ```
 
-### makeDispatcherFor
-With NgRx Smartish `makeDispatcherFor` you can automatically dispatch actions in your component templates. (Note: This is similar to `dispatchableActionsFrom` but it calls dispatch automatically for you)
+### smartDispatch
+With NgRx Smartish `smartDispatch` you can automatically dispatch actions in your component templates. (Note: This is similar to `smartAction` but it calls dispatch automatically for you)
 
 ```
-import { makeDispatcherFor } from '@briebug/ngrx-smartish';
+import { smartDispatch } from '@briebug/ngrx-smartish';
 import { tacoAdded } from '...my-actions';
 
 @Component({
@@ -72,7 +71,7 @@ import { tacoAdded } from '...my-actions';
     template: `<button (click)="addTaco($event)">Add Taco</button>
 })
 export class MyComponent {
-    addTaco = makeDispatcherFor(tacoAdded);
+    addTaco = smartDispatch(tacoAdded);
 }
 ```
 

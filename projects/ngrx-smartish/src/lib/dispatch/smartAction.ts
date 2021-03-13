@@ -1,12 +1,12 @@
 import { ActionCreator } from '@ngrx/store';
 import { Creator, FunctionWithParametersType } from '@ngrx/store/src/models';
-import { makeDispatcherFor } from './makeDispatcherFor.factory';
+import { smartDispatch } from './smartDispatch';
 
 export interface DispachableAction<P extends unknown[], R = void> {
   dispatch: FunctionWithParametersType<P, R>;
 }
 
-export const dispatchableActionFrom = <
+export const smartAction = <
   T extends string = string,
   C extends Creator = Creator,
   P extends any[] = any[],
@@ -14,5 +14,5 @@ export const dispatchableActionFrom = <
 >(
   action: ActionCreator<T, C>
 ): ActionCreator<T, C> & DispachableAction<P, R> => {
-  return { ...action, dispatch: makeDispatcherFor(action) };
+  return { ...action, dispatch: smartDispatch(action) };
 };

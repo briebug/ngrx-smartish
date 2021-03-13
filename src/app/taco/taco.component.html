@@ -1,7 +1,7 @@
 <strong>ngrxSelect Pipe</strong>
 <pre>
-    {{ selectors.selectTaco | ngrxSelect | async | json }}
+    {{ selectors.selectTaco | smartSelect | async | json }}
 </pre>
 
 
-<button (click)="tacoAction()">Taco Button Dispatches via store.dispatch inside template</button>
+<button (click)="store.dispatch(actions.tacoAction())">Taco Button Dispatches via store.dispatch inside template</button>
